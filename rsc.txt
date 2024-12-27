@@ -1,0 +1,8 @@
+https://dev.d24jig8s1lr7n9.amplifyapp.com/
+https://omdbapi.com/
+https://github.com/public-apis/public-apis
+
+API;
+https://www.omdbapi.com/?apikey=46b22cfa&s=fast
+
+show the first 6 movies that have fast in it
