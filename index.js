@@ -1,5 +1,6 @@
-const movieCardEl = document.querySelector('.movie-card');
+const movieCardEl = document.querySelector('.movies-container');
 const id = localStorage.getItem("id")
+const title = document.querySelector(".search-box")
 
 
 async function onSearchChange(event) {
@@ -8,18 +9,21 @@ async function onSearchChange(event) {
 }
 
 async function renderCards(userId) {
-    const movie = await fetch(`https://www.omdbapi.com/?apikey=46b22cfa&s=fast`);
+    const topic = title.value
+    const movie = await fetch(`https://www.omdbapi.com/?apikey=46b22cfa&s=${topic || ""}`);
     const movieData = await movie.json()
-    movieCardEl.innerHTML = movieData.map(post => postHTML(post)).join('')
-    
+    movieCardEl.innerHTML = movieData.Search.slice(0, 6).map(cards => movieHTML(cards)).join('')
 }
 
 
 function movieHTML(cards) {
     return `<div class="movie-card">
-    <img class="movie-poster" src="https://via.placeholder.com/200x300" alt="Movie Poster">
-    <div class="movie-title">Sample Movie</div>
+    <img class="movie-poster" src="${cards.Poster}" alt="Movie Poster">
+    <div class="movie-title">${cards.Title}</div>
 </div>`
 }
 
-renderCards(userId);
+
+
+
+//slice method
